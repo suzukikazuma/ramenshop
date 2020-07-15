@@ -25,11 +25,11 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'パスワード確認') !!}
+                    {!! Form::label('password_confirmation', 'パスワード(確認用)') !!}
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('Sign up', ['class' => 'btn btn-danger btn-block']) !!}
+                {!! Form::submit('会員登録', ['class' => 'btn btn-danger btn-block']) !!}
             {!! Form::close() !!}
         </div>
     </div>
