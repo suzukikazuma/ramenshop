@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
     
-    <body style="background-color:#FFFAF0">
+    <body style="background-color:#FFFAF0; min-height:100vh; box-sizing: border-box; position: relative;padding-bottom:160px;">
 
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
@@ -18,6 +18,11 @@
 
             @yield('content')
         </div>
+        
+        <footer style="background-color:#DC3545;  width:100%; position: absolute; bottom: 0; text-align: center;">
+      
+           <p style="font-size:0.5em; line-height:50px">©︎ 2020 ramen</p>
+        </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

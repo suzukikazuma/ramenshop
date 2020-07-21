@@ -18,7 +18,9 @@ class CreateStocksTable extends Migration
             $table->string("name","100");
             $table->integer("price");
             $table->string("imgpath","200");
+            $table->integer("quantity");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

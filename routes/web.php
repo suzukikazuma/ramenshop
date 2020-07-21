@@ -20,9 +20,14 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
-Route::get('/mycart', 'ShopController@myCart')->middleware("auth")->name("mycart");
-Route::post('/mycart', 'ShopController@addMycart')->middleware("auth")->name("mycart");
+Route::group(['middleware' => ['auth']], function () {
+   
+      Route::get('/mycart', 'ShopController@mycart')->middleware("auth")->name("mycart");
+      Route::post('/mycart', 'ShopController@add')->middleware("auth")->name("mycart");
+      Route::POST('/cartdelete','ShopController@delete')->name("cartdelete");
+      Route::post('/checkout', 'ShopController@checkout')->name("checkout");
+  
+  });
 
 Route::get("about","ShopController@about")->name("about");
 Route::get("contact","ShopController@contact")->name("contact");
-

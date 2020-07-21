@@ -12,48 +12,55 @@ class StockTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('stocks')->truncate(); //2回目実行の際にシーダー情報をクリア
+         DB::table('stocks')->truncate();
        DB::table('stocks')->insert([
            'name' => '豚骨らーめん',
            'price' => 700,
            'imgpath' => '豚骨らーめん.JPG',
+           'quantity'=>10,
        ]);
        
         DB::table('stocks')->insert([
            'name' => '醤油らーめん',
            'price' => 650,
            'imgpath' => '醤油らーめん.JPG',
+            'quantity'=>10,
        ]);
        
        DB::table('stocks')->insert([
            'name' => "あっさり醤油らーめん",
            'price' => 700,
-           'imgpath' => '',
+           'imgpath' => '和風あっさりしょうゆ.jpg',
+            'quantity'=>10,
        ]);
        
         DB::table('stocks')->insert([
            'name' => 'ゆず塩らーめん',
            'price' => 700,
-           'imgpath' => '',
+           'imgpath' => 'ゆず塩らーめん.jpg',
+            'quantity'=>10,
        ]);
        
         DB::table('stocks')->insert([
            'name' => 'つけ麺らーめん',
            'price' => 750,
-           'imgpath' => '',
+           'imgpath' => 'つけめん.jpg',
+            'quantity'=>10,
        ]);
        
         
         DB::table('stocks')->insert([
            'name' => '餃子',
            'price' => 300,
-           'imgpath' => '',
+           'imgpath' => 'ギョーザ.jpg',
+            'quantity'=>10,
        ]);
        
        DB::table('stocks')->insert([
            'name' => '唐揚げ',
            'price' => 400,
-           'imgpath' => '',
+           'imgpath' => 'からあげ.jpg',
+            'quantity'=>10,
        ]);
 
 
