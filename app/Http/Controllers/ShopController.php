@@ -20,10 +20,24 @@ class ShopController extends Controller
 
 
    public function mycart() {
+     /* TODO: 
+        1. cartsテーブルから、ログインユーザーのIDに紐づくレコードを取得する
+        2. 1で取得したレコードをarray_count_values関数に入れて、重複するラーメンの数を取得する
+        3. 1と2の結果を組み合わせて、ラーメンのオブジェクトと出現回数を持つ連想配列を作る
+        ex) $result = [
+              {
+                'data' => $data, // ラーメン(Itemオブジェクト)
+                'count' => 1以上の整数 // 2でarray_count_valuesを実行したときの結果
+              },
+              ....
+            ]
+     */
                 $carts = (new Cart)->all_get(Auth::id());
                 $subtotals = $this->subtotals($carts);
+                
                 $totals = $this->totals($carts);
                 $includeSendPrice = $this->includeSendPrice($carts);
+                
                 $quantitys = $this->quantitys($carts);
          
                 return view('mycart', compact('carts', 'totals', 'subtotals','includeSendPrice','quantitys',));
@@ -72,11 +86,8 @@ class ShopController extends Controller
                 $cart_id = $request->input('cart_id');
                 if ((new Cart)->soft_delete_db($cart_id)) {
                         $request->session()->regenerateToken();
-                        $message = 'カートから商品を削除しました';
-                } else {
-                        $message = '削除できませんでした';
                 }
-                return $this->mycart($message);
+                return $this->mycart();
         }
 
    
@@ -89,9 +100,12 @@ class ShopController extends Controller
      return view("contact");
    }
    
-    public function checkout(Cart $cart)
-   {
-       $checkout_info = $cart->checkoutCart();       
+  public function checkout(Cart $cart)
+  {
+       $checkout_info = $cart->checkoutCart();
+       
+       // TODO: 購入メール送信を購入者と管理者に送信する
+       // 
        return view('checkout');
    }
 }
